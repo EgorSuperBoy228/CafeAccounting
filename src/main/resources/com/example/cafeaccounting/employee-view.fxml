@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="619.2" prefWidth="859.2" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cafeaccounting.EmployeeController">
+   <top>
+      <Label prefHeight="74.0" prefWidth="102.0" text="СОТРУДНИКИ" textAlignment="CENTER" textFill="WHITE" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Microsoft YaHei Light" size="15.0" />
+         </font>
+      </Label>
+   </top>
+   <left>
+      <VBox prefHeight="471.0" prefWidth="60.0" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <VBox prefHeight="471.0" prefWidth="60.0" BorderPane.alignment="CENTER" />
+   </right>
+   <bottom>
+      <HBox prefHeight="74.4" prefWidth="614.0" BorderPane.alignment="CENTER" />
+   </bottom>
+   <center>
+      <TableView fx:id="table" prefHeight="409.0" prefWidth="73.0" style="-fx-background-color: transparent; -fx-border-color: #FFA500;" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn prefWidth="35.200010657310486" text="№" />
+          <TableColumn prefWidth="86.4000244140625" text="Должность" />
+            <TableColumn prefWidth="80.79998779296875" text="Имя" />
+            <TableColumn prefWidth="99.20001220703125" text="Фамилия" />
+            <TableColumn prefWidth="75.0" text="Отчество" />
+            <TableColumn prefWidth="61.5999755859375" text="Возраст" />
+            <TableColumn prefWidth="112.79998779296875" text="Серия паспорта" />
+            <TableColumn prefWidth="102.39996337890625" text="Номер паспорта" />
+            <TableColumn prefWidth="82.40007324218755" text="Номер" />
+        </columns>
+      </TableView>
+   </center>
+</BorderPane>
