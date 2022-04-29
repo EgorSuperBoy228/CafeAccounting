@@ -47,9 +47,9 @@
                   <Font name="Microsoft YaHei Light" size="15.0" />
                </font>
             </Label>
-            <Button layoutX="1066.0" mnemonicParsing="false" onAction="#exitButton" style="-fx-background-color: transparent;" text="X" textFill="#696868">
+            <Button layoutX="1070.0" layoutY="-1.0" mnemonicParsing="false" onAction="#exitButton" style="-fx-background-color: transparent;" styleClass="sidebarItem" text="X" textFill="#898989">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font name="Microsoft YaHei Light" size="14.0" />
                </font>
             </Button>
          </children>

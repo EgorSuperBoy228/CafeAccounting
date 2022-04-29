@@ -1,5 +1,6 @@
 package com.example.cafeaccounting;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -10,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class SignInController {
@@ -27,19 +29,15 @@ public class SignInController {
     private PasswordField passwordText;
 
 
-    private String login = loginText.getText();
-    private String password = passwordText.getText();
+
     @FXML
-    void signInButton(ActionEvent event) {
+    void signInButton(ActionEvent event) throws IOException {
 
     }
-
-
 
     @FXML
     void initialize() {
-
-
     }
+
 
 }
