@@ -17,26 +17,27 @@
       </Label>
    </top>
    <left>
-      <VBox prefHeight="471.0" prefWidth="60.0" BorderPane.alignment="CENTER" />
+      <VBox prefHeight="471.0" prefWidth="18.0" BorderPane.alignment="CENTER" />
    </left>
    <right>
-      <VBox prefHeight="471.0" prefWidth="60.0" BorderPane.alignment="CENTER" />
+      <VBox prefHeight="471.0" prefWidth="15.0" BorderPane.alignment="CENTER" />
    </right>
    <bottom>
       <HBox prefHeight="74.4" prefWidth="614.0" BorderPane.alignment="CENTER" />
    </bottom>
    <center>
-      <TableView fx:id="table" prefHeight="409.0" prefWidth="73.0" style="-fx-background-color: transparent; -fx-border-color: #FFA500;" BorderPane.alignment="CENTER">
+      <TableView fx:id="tableEmployee" prefHeight="471.0" prefWidth="807.0" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn prefWidth="35.200010657310486" text="№" />
-          <TableColumn prefWidth="86.4000244140625" text="Должность" />
-            <TableColumn prefWidth="80.79998779296875" text="Имя" />
-            <TableColumn prefWidth="99.20001220703125" text="Фамилия" />
-            <TableColumn prefWidth="75.0" text="Отчество" />
-            <TableColumn prefWidth="61.5999755859375" text="Возраст" />
-            <TableColumn prefWidth="112.79998779296875" text="Серия паспорта" />
-            <TableColumn prefWidth="102.39996337890625" text="Номер паспорта" />
-            <TableColumn prefWidth="82.40007324218755" text="Номер" />
+          <TableColumn fx:id="idColumn" prefWidth="35.200010657310486" text="№" />
+            <TableColumn fx:id="surnameColumn" prefWidth="80.79998779296875" text="Фамилия" />
+            <TableColumn fx:id="nameColumn" prefWidth="99.20001220703125" text="Имя" />
+            <TableColumn fx:id="patronymicColumn" prefWidth="75.0" text="Отчество" />
+            <TableColumn fx:id="genderColumn" prefWidth="56.79998779296875" text="Пол" />
+            <TableColumn fx:id="ageColumn" prefWidth="60.79998779296875" text="Возраст" />
+            <TableColumn fx:id="passportSeriesColumn" prefWidth="104.7999267578125" text="Серия паспорта" />
+            <TableColumn fx:id="passportNumberColumn" prefWidth="103.20001220703125" text="Номер паспорта" />
+            <TableColumn fx:id="numberColumn" prefWidth="108.7999267578125" text="Номер" />
+          <TableColumn fx:id="postColumn" prefWidth="97.60000000000002" text="Должность" />
         </columns>
       </TableView>
    </center>

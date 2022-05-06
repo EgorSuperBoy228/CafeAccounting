@@ -1,31 +1,49 @@
 package Person;
 
-public abstract class Employee {
+import javafx.beans.property.StringProperty;
+
+public class Employee {
     private String name;
     private String surname;
     private String patronymic;
     private String post;
-    private int passportSeries;
-    private int passportNumber;
-    private int number;
-    private int age;
-    private static int count = 1;
-    private int id;
+    private String passportSeries;
+    private String passportNumber;
+    private String number;
+    private String age;
+    private String id;
+    private String gender;
 
-    public Employee(String surname,String name, String patronymic, int age, int number, int passportSeries, int passportNumber){
+    public Employee(String id, String surname, String name, String patronymic, String gender, String age, String passportSeries, String passportNumber, String number, String post) {
         this.surname = surname;
         this.name = name;
         this.patronymic = patronymic;
         this.age = age;
         this.number = number;
-        this.passportSeries=passportSeries;
+        this.gender=gender;
+        this.passportSeries= passportSeries;
         this.passportNumber=passportNumber;
-        this.id=count;
-        count++;
+        this.id=id;
+        this.post=post;
+    }
+    public Employee(String surname, String name, String patronymic, String gender, String age, String passportSeries, String passportNumber, String number, String post) {
+        this.surname = surname;
+        this.name = name;
+        this.patronymic = patronymic;
+        this.gender = gender;
+        this.age = age;
+        this.number = number;
+        this.passportSeries= passportSeries;
+        this.passportNumber=passportNumber;
+        this.post=post;
     }
 
-    public int getId() {
-        return id;
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public String getName() {
@@ -60,35 +78,43 @@ public abstract class Employee {
         this.post = post;
     }
 
-    public int getPassportSeries() {
+    public String getPassportSeries() {
         return passportSeries;
     }
 
-    public void setPassportSeries(int passportSeries) {
+    public void setPassportSeries(String passportSeries) {
         this.passportSeries = passportSeries;
     }
 
-    public int getPassportNumber() {
+    public String getPassportNumber() {
         return passportNumber;
     }
 
-    public void setPassportNumber(int passportNumber) {
+    public void setPassportNumber(String passport_number) {
         this.passportNumber = passportNumber;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
