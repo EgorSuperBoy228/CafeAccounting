@@ -18,8 +18,9 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("mainwindow-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1097, 699);
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("signin-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 648, 400);
+        //Scene scene = new Scene(fxmlLoader.load(), 1097, 699);
         stage.setTitle("CafeAccounting");
         stage.setScene(scene);
         stage.initStyle(StageStyle.UNDECORATED);

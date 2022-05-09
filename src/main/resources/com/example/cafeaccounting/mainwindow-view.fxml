@@ -2,60 +2,67 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="699.0" prefWidth="1097.0" style="-fx-background-color: #353535;" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cafeaccounting.MainController">
+<BorderPane prefHeight="543.0" prefWidth="837.0" style="-fx-background-color: #201F26;" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cafeaccounting.MainController">
    <left>
-      <AnchorPane prefHeight="640.0" prefWidth="243.0" style="-fx-background-color: #26252d;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="464.0" prefWidth="182.0" style="-fx-background-color: #26252d;" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="77.0" layoutY="86.0" mnemonicParsing="false" onAction="#profile" style="-fx-background-color: transparent;" styleClass="sidebarItem" text="ПРОФИЛЬ" textFill="WHITE">
+            <Button layoutY="139.0" mnemonicParsing="false" onAction="#profile" prefHeight="29.0" prefWidth="79.0" style="-fx-background-color: transparent;" styleClass="sidebarItem" text="Профиль" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei Light" size="14.0" />
                </font>
             </Button>
-            <Button layoutX="64.0" layoutY="140.0" mnemonicParsing="false" onAction="#employee" style="-fx-background-color: transparent;" styleClass="sidebarItem" text="СОТРУДНИКИ" textFill="WHITE">
+            <Button layoutY="177.0" mnemonicParsing="false" onAction="#employee" prefHeight="29.0" prefWidth="97.0" style="-fx-background-color: transparent;" styleClass="sidebarItem" text="Сотрудники" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei Light" size="14.0" />
                </font>
             </Button>
-            <Button layoutX="95.0" layoutY="190.0" mnemonicParsing="false" style="-fx-background-color: transparent;" styleClass="sidebarItem" text="УЧЕТ" textFill="WHITE">
+            <Button layoutY="213.0" mnemonicParsing="false" onAction="#accounting" prefHeight="29.0" prefWidth="49.0" style="-fx-background-color: transparent;" styleClass="sidebarItem" text="Учёт" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei Light" size="14.0" />
                </font>
             </Button>
-            <Button layoutX="12.0" layoutY="245.0" mnemonicParsing="false" onAction="#signUp" prefHeight="30.0" prefWidth="218.0" style="-fx-background-color: transparent;" styleClass="sidebarItem" text="РЕГИСТРАЦИЯ СОТРУДНИКА" textFill="WHITE">
+            <Button layoutY="253.0" mnemonicParsing="false" onAction="#signUp" prefHeight="30.0" prefWidth="188.0" style="-fx-background-color: transparent;" styleClass="sidebarItem" text="Регистрация сотрудников" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei Light" size="14.0" />
                </font>
             </Button>
-            <Button layoutX="36.0" layoutY="303.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="170.0" style="-fx-background-color: transparent;" styleClass="sidebarItem" text="ВЫХОД ИЗ ПРОФИЛЯ" textFill="WHITE">
+            <Button layoutY="295.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="142.0" style="-fx-background-color: transparent;" styleClass="sidebarItem" text="Выход из профиля" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei Light" size="14.0" />
                </font>
             </Button>
+            <ImageView fitHeight="158.0" fitWidth="158.0" layoutX="5.0" layoutY="371.0">
+               <image>
+                  <Image url="@restaurant.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="6.0" layoutY="14.0" text="CafeAccounting" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei Light" size="18.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </left>
-   <top>
-      <AnchorPane prefHeight="79.0" prefWidth="1098.0" style="-fx-background-color: #26252d;" BorderPane.alignment="CENTER">
+   <center>
+      <StackPane fx:id="stackPane" prefHeight="543.0" prefWidth="642.0" BorderPane.alignment="CENTER" />
+   </center>
+   <right>
+      <AnchorPane prefHeight="543.0" prefWidth="26.0" BorderPane.alignment="CENTER">
          <children>
-            <Label prefHeight="80.0" prefWidth="243.0" style="-fx-background-color: #FFA500;" text="            CAFEACCOUNTING" textAlignment="CENTER" textFill="WHITE">
+            <Button layoutX="1.0" layoutY="3.0" mnemonicParsing="false" onAction="#exitButton" prefHeight="18.0" prefWidth="26.0" style="-fx-background-color: transparent;" text="X" textFill="WHITE">
                <font>
-                  <Font name="Microsoft YaHei Light" size="15.0" />
-               </font>
-            </Label>
-            <Button layoutX="1070.0" layoutY="-1.0" mnemonicParsing="false" onAction="#exitButton" style="-fx-background-color: transparent;" text="X" textFill="#898989">
-               <font>
-                  <Font name="Microsoft YaHei Light" size="14.0" />
+                  <Font name="Microsoft YaHei Light" size="13.0" />
                </font>
             </Button>
          </children>
       </AnchorPane>
-   </top>
-   <center>
-      <StackPane fx:id="stackPane" BorderPane.alignment="CENTER" />
-   </center>
+   </right>
 </BorderPane>

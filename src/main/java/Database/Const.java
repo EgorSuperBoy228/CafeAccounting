@@ -12,4 +12,7 @@ public class Const {
     public static final String EMPLOYEE_NUMBER = "number";
     public static final String EMPLOYEE_ID = "id";
     public static final String EMPLOYEE_POST = "post";
+    public static final String USER_TABLE = "user" ;
+    public static final String USER_USERNAME = "login";
+    public static final String USER_PASSWORD = "password";
 }

@@ -1,5 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="509.0" prefWidth="614.0" style="-fx-background-color: #363636;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" />
+
+<BorderPane prefHeight="543.0" prefWidth="642.0" style="-fx-background-color: #201F26;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <AnchorPane prefHeight="478.0" prefWidth="642.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="48.0" layoutY="56.0" text="Хорошей работы,Егор!" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei Light" size="29.0" />
+               </font>
+            </Label>
+            <Label layoutX="48.0" layoutY="142.0" text="Уровень доступа: 1" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei Light" size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="48.0" layoutY="183.0" text="Должность: Директор" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei Light" size="17.0" />
+               </font>
+            </Label>
+            <Button layoutX="255.0" layoutY="425.0" mnemonicParsing="false" style="-fx-background-color: #363537;" text="Выйти из профиля" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei Light" size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </center>
+   <top>
+      <Label prefHeight="54.0" prefWidth="65.0" text="Профиль" textFill="WHITE" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Microsoft YaHei Light" size="15.0" />
+         </font>
+      </Label>
+   </top>
+</BorderPane>

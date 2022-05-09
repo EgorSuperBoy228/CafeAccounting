@@ -7,10 +7,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class MainController {
 
@@ -47,6 +50,13 @@ public class MainController {
         stackPane.getChildren().removeAll();
         stackPane.getChildren().setAll(fxml);
     }
+    @FXML
+    void accounting(ActionEvent event) throws IOException {
+        Parent fxml = FXMLLoader.load(getClass().getResource("accounting-view.fxml"));
+        stackPane.getChildren().removeAll();
+        stackPane.getChildren().setAll(fxml);
+    }
+
 
     @FXML
     void initialize() {
