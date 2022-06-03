@@ -6,31 +6,25 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane prefHeight="543.0" prefWidth="642.0" style="-fx-background-color: #201F26;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="543.0" prefWidth="642.0" style="-fx-background-color: #201F26;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cafeaccounting.ProfileController">
    <center>
       <AnchorPane prefHeight="478.0" prefWidth="642.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="48.0" layoutY="56.0" text="Хорошей работы,Егор!" textFill="WHITE">
+            <Label layoutX="48.0" layoutY="56.0" text="Хорошей работы," textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei Light" size="29.0" />
                </font>
             </Label>
-            <Label layoutX="48.0" layoutY="142.0" text="Уровень доступа: 1" textFill="WHITE">
-               <font>
-                  <Font name="Microsoft YaHei Light" size="17.0" />
-               </font>
-            </Label>
-            <Label layoutX="48.0" layoutY="183.0" text="Должность: Директор" textFill="WHITE">
-               <font>
-                  <Font name="Microsoft YaHei Light" size="17.0" />
-               </font>
-            </Label>
-            <Button layoutX="255.0" layoutY="425.0" mnemonicParsing="false" style="-fx-background-color: #363537;" text="Выйти из профиля" textFill="WHITE">
+            <Button fx:id="exitProfile" layoutX="255.0" layoutY="425.0" mnemonicParsing="false" style="-fx-background-color: #363537;" text="Выйти из профиля" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei Light" size="13.0" />
                </font>
             </Button>
+            <Label fx:id="UserNameLabel" layoutX="297.0" layoutY="56.0" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei Light" size="29.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </center>

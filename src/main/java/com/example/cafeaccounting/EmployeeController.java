@@ -1,25 +1,20 @@
 package com.example.cafeaccounting;
 
-import java.net.URL;
-import java.sql.*;
-import java.util.List;
-import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import Database.DatabaseHandler;
+import Person.Cafe;
 import Person.Employee;
-import javafx.beans.property.StringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import javax.xml.transform.Result;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class EmployeeController {
 
@@ -60,12 +55,14 @@ public class EmployeeController {
 
     @FXML
     private TableView<Employee> tableEmployee;
-
-    ObservableList<Employee> data = FXCollections.observableArrayList();
+    private Cafe data;
 
     @FXML
     void initialize() throws ClassNotFoundException {
+        data = new Cafe();
+
         try{
+            data.clear();
             Connection connection = DatabaseHandler.getDbConnection();
             ResultSet resultSet = connection.createStatement().executeQuery("select * from employee");
             while(resultSet.next()){
@@ -88,7 +85,7 @@ public class EmployeeController {
         numberColumn.setCellValueFactory(new PropertyValueFactory<Employee,String>("number"));
         postColumn.setCellValueFactory(new PropertyValueFactory<Employee,String>("post"));
 
-        tableEmployee.setItems(data);
+        tableEmployee.setItems(data.getEmployees());
     }
 
 }

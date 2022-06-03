@@ -1,27 +1,10 @@
 package Person;
 
-public class Director {
-    private String login;
-    private String password;
-    public Director(){}
-    public Director(String login, String password){
-        this.login = login;
-        this.password = password;
+public class Director extends User{
+    public Director() {
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
+    public Director(String name, String surname, String patronymic, String passportSeries, String passportNumber, String number, String login, String password) {
+        super(name, surname, patronymic, passportSeries, passportNumber, number, login, password);
     }
 }

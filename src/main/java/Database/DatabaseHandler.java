@@ -1,12 +1,9 @@
 package Database;
 
-import Person.Director;
+import Encryption.CryptWithMD5;
+import Person.User;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.ResultSet;
+import java.sql.*;
 public class DatabaseHandler extends Configs {
 
     public static Connection getDbConnection() throws ClassNotFoundException, SQLException {
@@ -15,7 +12,7 @@ public class DatabaseHandler extends Configs {
         Connection dbConnection = DriverManager.getConnection(connectionString,dbUser,dbPass);
         return dbConnection;
     }
-    public ResultSet getUser(Director user){
+    public ResultSet getUser(User user){
         ResultSet resultSet = null;
         String select = "SELECT * FROM "+ Const.USER_TABLE+ " WHERE " + Const.USER_USERNAME + "=? AND " + Const.USER_PASSWORD+"=?";
         PreparedStatement prSt = null;
@@ -32,7 +29,7 @@ public class DatabaseHandler extends Configs {
             e.printStackTrace();
         }
         try {
-            prSt.setString(2, user.getPassword());
+            prSt.setString(2, CryptWithMD5.cryptWithMD5(user.getPassword()));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -42,6 +39,62 @@ public class DatabaseHandler extends Configs {
             e.printStackTrace();
         }
         return resultSet;
+    }
+    public void signUpUser (User user) {
+        String insert ="INSERT INTO " + Const.USER_TABLE + "("+ Const.USER_USERNAME +","+ Const.USER_PASSWORD +","+ Const.USER_SURNAME +","+ Const.USER_NAME +","+ Const.USER_PATRONYMIC+","+ Const.USER_NUMBER +","+ Const.USER_PASSPORT_SERIES+","+ Const.USER_PASSPORT_NUMBER +")"+ "VALUES(?,?,?,?,?,?,?,?)";
+        PreparedStatement prSt = null;
+        try {
+            prSt = getDbConnection().prepareStatement(insert);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        try {
+            prSt.setString(1, user.getLogin());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            prSt.setString(2, CryptWithMD5.cryptWithMD5(user.getPassword()));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            prSt.setString(3, user.getSurname());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            prSt.setString(4, user.getName());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            prSt.setString(5, user.getPatronymic());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            prSt.setString(6, user.getNumber());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            prSt.setString(7, user.getPassportSeries());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            prSt.setString(8, user.getPassportNumber());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            prSt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 

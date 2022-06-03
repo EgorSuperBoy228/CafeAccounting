@@ -1,15 +1,8 @@
 package com.example.cafeaccounting;
 
-import java.io.IOException;
-import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ResourceBundle;
-
 import Database.DatabaseHandler;
-import Person.Director;
+import Person.User;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -18,6 +11,12 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
+import java.io.IOException;
+import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
 
 public class SignInController {
 
@@ -39,24 +38,47 @@ public class SignInController {
     @FXML
     private Button signUpButton;
 
+    public static String logggin;
+
     @FXML
     void exitButton(ActionEvent event) {
         System.exit(0);
     }
 
 
+
     @FXML
     void initialize() {
         signInButton.setOnAction(actionEvent -> {
-            signInButton.getScene().getWindow().hide();
-            loginUser(loginTextField.getText(), passwordField.getText());
+            try {
+                loginUser(loginTextField.getText(), passwordField.getText());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            logggin = loginTextField.getText();
+        });
+        signUpButton.setOnAction(actionEvent -> {
+            signUpButton.getScene().getWindow().hide();
+            Stage stage = new Stage();
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("signupuser-view.fxml"));
+            Scene scene = null;
+            try {
+                scene = new Scene(fxmlLoader.load(), 682, 503);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            stage.setTitle("CafeAccounting");
+            stage.setScene(scene);
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.show();
+
         });
 
     }
 
-    private void loginUser(String loginText, String loginPassword) {
+    private void loginUser(String loginText, String loginPassword) throws IOException {
         DatabaseHandler dbHandler = new DatabaseHandler();
-        Director user = new Director();
+        User user = new User();
         user.setLogin(loginText);
         user.setPassword(loginPassword);
         ResultSet resultSet = dbHandler.getUser(user);
@@ -70,6 +92,7 @@ public class SignInController {
             counter++;
         }
         if (counter >= 1) {
+            signInButton.getScene().getWindow().hide();
             Stage stage = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("mainwindow-view.fxml"));
             Scene scene = null;
@@ -84,6 +107,8 @@ public class SignInController {
             stage.show();
         }
 
+    }
 
+    public void rollUpButton(ActionEvent actionEvent) {
     }
 }

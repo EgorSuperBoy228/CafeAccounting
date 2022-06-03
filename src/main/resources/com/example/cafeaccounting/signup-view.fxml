@@ -15,7 +15,7 @@
 
 <BorderPane prefHeight="543.0" prefWidth="642.0" style="-fx-background-color: #201F26;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cafeaccounting.SignUpController">
    <top>
-      <Label prefHeight="74.0" prefWidth="214.0" text="РЕГИСТРАЦИЯ СОТРУДНИКА" textAlignment="CENTER" textFill="WHITE" BorderPane.alignment="CENTER">
+      <Label prefHeight="74.0" prefWidth="174.0" text="Регистрация сотрудника" textAlignment="CENTER" textFill="WHITE" BorderPane.alignment="CENTER">
          <font>
             <Font name="Microsoft YaHei Light" size="15.0" />
          </font>
@@ -78,7 +78,7 @@
       </VBox>
    </right>
    <bottom>
-      <Button mnemonicParsing="false" onAction="#signUpButton" prefHeight="30.0" prefWidth="205.0" style="-fx-background-color: #363537;" text="ЗАРЕГИСТРИРОВАТЬ" textFill="WHITE" BorderPane.alignment="BASELINE_CENTER">
+      <Button mnemonicParsing="false" onAction="#signUpButton" prefHeight="30.0" prefWidth="175.0" style="-fx-background-color: #363537;" text="Зарегистрировать " textFill="WHITE" BorderPane.alignment="BASELINE_CENTER">
          <font>
             <Font name="Microsoft YaHei Light" size="13.0" />
          </font>

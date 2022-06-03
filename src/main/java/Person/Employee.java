@@ -1,6 +1,6 @@
 package Person;
 
-import javafx.beans.property.StringProperty;
+import java.time.LocalDate;
 
 public class Employee {
     private String name;
@@ -13,6 +13,9 @@ public class Employee {
     private String age;
     private String id;
     private String gender;
+    private Integer rateAnHour;
+    private int hour;
+    private LocalDate date;
 
     public Employee(String id, String surname, String name, String patronymic, String gender, String age, String passportSeries, String passportNumber, String number, String post) {
         this.surname = surname;
@@ -37,6 +40,62 @@ public class Employee {
         this.passportNumber=passportNumber;
         this.post=post;
     }
+
+    public Employee(String id, String surname, String name, String patronymic, String post) {
+        this.name = name;
+        this.surname = surname;
+        this.patronymic = patronymic;
+        this.post = post;
+        this.id = id;
+    }
+
+    public Employee(String id, String surname, String name, String patronymic, String post, int rateAnHour, int hour, LocalDate date) {
+        this.name = name;
+        this.surname = surname;
+        this.patronymic = patronymic;
+        this.post = post;
+        this.id = id;
+        this.rateAnHour = rateAnHour;
+        this.hour = hour;
+        this.date = date;
+    }
+
+    public Employee(String id, String surname, String name, String patronymic, String post, String rateAnHour, String hour, String date) {
+        this.name = name;
+        this.surname = surname;
+        this.patronymic = patronymic;
+        this.post = post;
+        this.id = id;
+        this.rateAnHour = Integer.valueOf(rateAnHour);
+        this.hour = Integer.parseInt(hour);
+        this.date = LocalDate.parse(date);
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public Integer getRateAnHour() {
+        return rateAnHour;
+    }
+
+    public void setRateAnHour(Integer rateAnHour) {
+        this.rateAnHour = rateAnHour;
+    }
+
+    public int getHour() {
+        return hour;
+    }
+
+    public void setHour(int hour) {
+        this.hour = hour;
+    }
+
+
 
     public String getGender() {
         return gender;
