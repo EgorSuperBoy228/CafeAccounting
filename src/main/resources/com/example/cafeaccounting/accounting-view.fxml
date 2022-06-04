@@ -46,7 +46,7 @@
       </AnchorPane>
    </center>
    <top>
-      <Label prefHeight="50.0" prefWidth="36.0" text="Учет" textFill="WHITE" BorderPane.alignment="CENTER">
+      <Label prefHeight="50.0" prefWidth="158.0" text="Запись рабочих часов" textFill="WHITE" BorderPane.alignment="CENTER">
          <font>
             <Font name="Microsoft YaHei Light" size="15.0" />
          </font>

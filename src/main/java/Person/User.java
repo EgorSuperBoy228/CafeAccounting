@@ -14,13 +14,10 @@ public class  User {
     public User() {
     }
 
-    public User(String name, String surname, String patronymic, String passportSeries, String passportNumber, String number, String login, String password, String post) {
+    public User(String name, String surname, String patronymic, String login, String password, String post) {
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
-        this.passportSeries = passportSeries;
-        this.passportNumber = passportNumber;
-        this.number = number;
         this.login = login;
         this.password = password;
         this.post = post;

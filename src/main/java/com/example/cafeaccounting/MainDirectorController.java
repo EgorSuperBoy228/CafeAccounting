@@ -60,8 +60,10 @@ public class MainDirectorController {
     }
 
     @FXML
-    void settings(ActionEvent event) {
-
+    void settings(ActionEvent event) throws IOException {
+        Parent fxml = FXMLLoader.load(getClass().getResource("setting-view.fxml"));
+        stackPane.getChildren().removeAll();
+        stackPane.getChildren().setAll(fxml);
     }
     @FXML
     void initialize() throws IOException {

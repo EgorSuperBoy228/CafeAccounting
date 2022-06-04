@@ -46,7 +46,7 @@ public class DatabaseHandler extends Configs {
         return resultSet;
     }
     public void signUpUser (User user) {
-        String insert ="INSERT INTO " + Const.USER_TABLE + "("+ Const.USER_USERNAME +","+ Const.USER_PASSWORD +","+ Const.USER_SURNAME +","+ Const.USER_NAME +","+ Const.USER_PATRONYMIC+","+ Const.USER_NUMBER +","+ Const.USER_PASSPORT_SERIES+","+ Const.USER_PASSPORT_NUMBER +","+ Const.USER_POST +")"+ "VALUES(?,?,?,?,?,?,?,?,?)";
+        String insert ="INSERT INTO " + Const.USER_TABLE + "("+ Const.USER_USERNAME +","+ Const.USER_PASSWORD +","+ Const.USER_SURNAME +","+ Const.USER_NAME +","+ Const.USER_PATRONYMIC+","+ Const.USER_POST +")"+ "VALUES(?,?,?,?,?,?)";
         PreparedStatement prSt = null;
         try {
             prSt = getDbConnection().prepareStatement(insert);
@@ -81,22 +81,7 @@ public class DatabaseHandler extends Configs {
             e.printStackTrace();
         }
         try {
-            prSt.setString(6, user.getNumber());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        try {
-            prSt.setString(7, user.getPassportSeries());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        try {
-            prSt.setString(8, user.getPassportNumber());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        try {
-            prSt.setString(9, user.getPost());
+            prSt.setString(6, user.getPost());
         } catch (SQLException e) {
             e.printStackTrace();
         }
