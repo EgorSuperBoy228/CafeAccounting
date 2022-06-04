@@ -70,6 +70,10 @@ public class Employee {
         this.hour = Integer.parseInt(hour);
         this.date = LocalDate.parse(date);
     }
+    public static int salaryCalculation(int rateAnHour, int hour){
+        int result = rateAnHour*hour;
+        return result;
+    }
 
     public LocalDate getDate() {
         return date;

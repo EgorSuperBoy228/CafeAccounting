@@ -1,10 +1,12 @@
 package com.example.cafeaccounting;
 
 import Database.DatabaseHandler;
+import Person.Cafe;
 import Person.Employee;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -75,20 +77,55 @@ public class ReportController {
 
     @FXML
     private TableColumn<Employee, String> tableColumnSurname;
+    @FXML
+    private TableColumn<Employee, LocalDate> dateTableColumn;
+    @FXML
+    private Label resultLabel;
+    private Cafe data;
+    private LocalDate startDate;
+    private LocalDate finalDate;
+
 
     @FXML
     void reportButton(ActionEvent event) throws SQLException, ClassNotFoundException {
+        startDate = oneDatePicker.getValue();
+        finalDate = twoDatePicker.getValue();
+        data = new Cafe();
+        data.clearReport();
         Connection connection = DatabaseHandler.getDbConnection();
+
         try{
             String idEmployee = idTextField.getText();
-            ResultSet resultSet = connection.createStatement().executeQuery("select * from employee where id ="+idEmployee);
+            ResultSet resultSet = connection.createStatement().executeQuery("select * from accounting where (id ="+idEmployee+") and (date between \'"+startDate+"\' and \'"+finalDate+"\')");
             while(resultSet.next()){
-                Employee employee = new Employee(resultSet.getString("id"), resultSet.getString("surname"), resultSet.getString("name"), resultSet.getString("patronymic"), resultSet.getString("post"));
+                data.addReport(new Employee(resultSet.getString("id"), resultSet.getString("surname"), resultSet.getString("name"), resultSet.getString("patronymic"), resultSet.getString("post"), resultSet.getString("rate_an_hour"), resultSet.getString("hour"), resultSet.getString("date")));
             };
         } catch (SQLException ex){
             Logger.getLogger(EmployeeController.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("False");
         }
+        tableColumnId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        tableColumnSurname.setCellValueFactory(new PropertyValueFactory<>("surname"));
+        tableColumnName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        tableColumnPatronymic.setCellValueFactory(new PropertyValueFactory<>("patronymic"));
+        tableColumnPost.setCellValueFactory(new PropertyValueFactory<>("post"));
+        tableColumnRateAnHour.setCellValueFactory(new PropertyValueFactory<>("rateAnHour"));
+        tableColumnHour.setCellValueFactory(new PropertyValueFactory<>("hour"));
+        dateTableColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+        table.setItems(data.getReport());
+        int amountHours = 0 ;
+        for (Employee employee : table.getItems()) {
+            amountHours = amountHours + employee.getHour();
+        }
+        System.out.println(amountHours);
+        int rateAnHour = 0;
+        for (Employee employee : table.getItems()) {
+            rateAnHour = employee.getRateAnHour();
+        }
+        System.out.println(rateAnHour);
+        int resul = Employee.salaryCalculation(rateAnHour,amountHours);
+        resultLabel.setText(String.valueOf(resul)+" руб");
+
 
     }
 

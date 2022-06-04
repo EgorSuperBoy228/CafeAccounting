@@ -21,6 +21,7 @@ public class Const {
     public static final String USER_NAME = "name";
     public static final String USER_SURNAME = "surname";
     public static final String USER_PATRONYMIC = "patronymic";
+    public static final String USER_POST = "post";
     public static final String ACCESS_DIRECTOR = "director";
     public static final String ACCESS_ADMINISTRATOR = "administrator";
     public static final String ACCESS_MANAGER = "manager";

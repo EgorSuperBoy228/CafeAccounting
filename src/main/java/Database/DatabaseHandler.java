@@ -14,7 +14,7 @@ public class DatabaseHandler extends Configs {
     }
     public ResultSet getUser(User user){
         ResultSet resultSet = null;
-        String select = "SELECT * FROM "+ Const.USER_TABLE+ " WHERE " + Const.USER_USERNAME + "=? AND " + Const.USER_PASSWORD+"=?";
+        String select = "SELECT * FROM "+ Const.USER_TABLE+ " WHERE " + Const.USER_USERNAME + "=? AND " + Const.USER_PASSWORD+"=? AND "+ Const.USER_POST+"=?";
         PreparedStatement prSt = null;
         try {
             prSt = getDbConnection().prepareStatement(select);
@@ -34,6 +34,11 @@ public class DatabaseHandler extends Configs {
             e.printStackTrace();
         }
         try {
+            prSt.setString(3, user.getPost());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
             resultSet = prSt.executeQuery();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -41,7 +46,7 @@ public class DatabaseHandler extends Configs {
         return resultSet;
     }
     public void signUpUser (User user) {
-        String insert ="INSERT INTO " + Const.USER_TABLE + "("+ Const.USER_USERNAME +","+ Const.USER_PASSWORD +","+ Const.USER_SURNAME +","+ Const.USER_NAME +","+ Const.USER_PATRONYMIC+","+ Const.USER_NUMBER +","+ Const.USER_PASSPORT_SERIES+","+ Const.USER_PASSPORT_NUMBER +")"+ "VALUES(?,?,?,?,?,?,?,?)";
+        String insert ="INSERT INTO " + Const.USER_TABLE + "("+ Const.USER_USERNAME +","+ Const.USER_PASSWORD +","+ Const.USER_SURNAME +","+ Const.USER_NAME +","+ Const.USER_PATRONYMIC+","+ Const.USER_NUMBER +","+ Const.USER_PASSPORT_SERIES+","+ Const.USER_PASSPORT_NUMBER +","+ Const.USER_POST +")"+ "VALUES(?,?,?,?,?,?,?,?,?)";
         PreparedStatement prSt = null;
         try {
             prSt = getDbConnection().prepareStatement(insert);
@@ -87,6 +92,11 @@ public class DatabaseHandler extends Configs {
         }
         try {
             prSt.setString(8, user.getPassportNumber());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            prSt.setString(9, user.getPost());
         } catch (SQLException e) {
             e.printStackTrace();
         }

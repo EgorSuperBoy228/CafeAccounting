@@ -1,15 +1,6 @@
 package com.example.cafeaccounting;
 
-import java.io.IOException;
-import java.net.URL;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.ResourceBundle;
-
-import Database.Const;
 import Database.DatabaseHandler;
-import Encryption.CryptWithMD5;
-import Person.Director;
 import Person.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,7 +12,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-import static Database.DatabaseHandler.getDbConnection;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class SignUpUserController {
 
@@ -84,7 +77,7 @@ public class SignUpUserController {
         });
         signUpButton.setOnAction(actionEvent -> {
             DatabaseHandler dbHandler = new DatabaseHandler();
-            dbHandler.signUpUser(new Director(nameTextField.getText(),surnameTextField.getText(),patronymicTextField.getText(),passportSeriesTextField.getText(),passportNumberTextField.getText(),numberTextField.getText(),loginTextField.getText(),passwordField.getText()));
+            dbHandler.signUpUser(new User(nameTextField.getText(),surnameTextField.getText(),patronymicTextField.getText(),passportSeriesTextField.getText(),passportNumberTextField.getText(),numberTextField.getText(),loginTextField.getText(),passwordField.getText(),""));
 
         });
 

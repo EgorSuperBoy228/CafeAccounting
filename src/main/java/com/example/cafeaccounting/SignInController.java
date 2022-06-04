@@ -46,7 +46,6 @@ public class SignInController {
     }
 
 
-
     @FXML
     void initialize() {
         signInButton.setOnAction(actionEvent -> {
@@ -79,8 +78,10 @@ public class SignInController {
     private void loginUser(String loginText, String loginPassword) throws IOException {
         DatabaseHandler dbHandler = new DatabaseHandler();
         User user = new User();
-        user.setLogin(loginText);
+
+        /*user.setLogin(loginText);
         user.setPassword(loginPassword);
+        user.setPost("Директор");*/
         ResultSet resultSet = dbHandler.getUser(user);
         int counter = 0;
         while (true) {
@@ -94,7 +95,7 @@ public class SignInController {
         if (counter >= 1) {
             signInButton.getScene().getWindow().hide();
             Stage stage = new Stage();
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("mainwindow-view.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("mainwindowdirector-view.fxml"));
             Scene scene = null;
             try {
                 scene = new Scene(fxmlLoader.load(), 837, 543);
@@ -106,9 +107,8 @@ public class SignInController {
             stage.initStyle(StageStyle.UNDECORATED);
             stage.show();
         }
-
     }
 
-    public void rollUpButton(ActionEvent actionEvent) {
+    public void rollUpButton (ActionEvent actionEvent){
     }
 }

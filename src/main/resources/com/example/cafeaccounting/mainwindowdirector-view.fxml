@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="543.0" prefWidth="837.0" style="-fx-background-color: #201F26;" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cafeaccounting.MainController">
+<BorderPane prefHeight="543.0" prefWidth="837.0" style="-fx-background-color: #201F26;" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cafeaccounting.MainDirectorController">
    <left>
       <AnchorPane prefHeight="464.0" prefWidth="182.0" style="-fx-background-color: #26252d;" BorderPane.alignment="CENTER">
          <children>
@@ -49,6 +49,11 @@
                   <Font name="Microsoft YaHei Light" size="18.0" />
                </font>
             </Label>
+            <Button layoutY="334.0" mnemonicParsing="false" onAction="#settings" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: transparent;" styleClass="sidebarItem" text="Настройки" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei Light" size="14.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </left>
