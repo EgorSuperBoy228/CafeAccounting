@@ -4,6 +4,8 @@ import Database.Const;
 import Database.DatabaseHandler;
 import Person.Cafe;
 import Person.Employee;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -30,8 +32,7 @@ public class AccountingController {
     @FXML
     private DatePicker datePicker;
 
-    @FXML
-    private ChoiceBox<Employee> employeeChoiceBox;
+
     @FXML
     private TableColumn<Employee, DatePicker> tableColumnDate;
 
@@ -61,7 +62,7 @@ public class AccountingController {
 
     @FXML
     private TextField hourTextField;
-    private String idEmployee;
+    //private String idEmployee;
     private LocalDate date;
     private Integer hour;
     private Integer rateAnHour;
@@ -69,28 +70,44 @@ public class AccountingController {
     private TableView<Employee> table;
     private Employee employee;
     private  static Cafe data;
+    @FXML
+    private ChoiceBox<Employee> employeeChoiceBox;
+    private static ObservableList<Employee> dataIdEmployee = FXCollections.observableArrayList();
 
 
     @FXML
     void initialize() throws ClassNotFoundException {
         data = new Cafe();
         data.clearAccounting();
+        //employeeChoiceBox.setItems(dataIdEmployee);
+        /*try{
+            Connection connection = DatabaseHandler.getDbConnection();
+            ResultSet resultSet = connection.createStatement().executeQuery("select * from employee");
+            while(resultSet.next()){
+                dataIdEmployee.add(new Employee(resultSet.getString("id")));
+                System.out.println("True");
+            };
+        } catch (SQLException ex){
+            Logger.getLogger(EmployeeController.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("False");
+        }*/
         try{
             Connection connection = DatabaseHandler.getDbConnection();
             ResultSet resultSet = connection.createStatement().executeQuery("select * from accounting");
             while(resultSet.next()){
-                data.addAccounting(new Employee(resultSet.getString("id"),resultSet.getString("surname"),resultSet.getString("name"),resultSet.getString("patronymic"),resultSet.getString("post"),resultSet.getString("rate_an_hour"),resultSet.getString("hour"),resultSet.getString("date")));
+                data.addAccounting(new Employee(resultSet.getString("idEmployee"),resultSet.getString("RateAnHour"),resultSet.getString("Hour"),resultSet.getString("Date")));
+                //dataIdEmployee.add(new Employee(resultSet.getString("idEmployee")));
                 System.out.println("True");
             };
         } catch (SQLException ex){
             Logger.getLogger(EmployeeController.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("False");
         }
-        tableColumnId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        tableColumnSurname.setCellValueFactory(new PropertyValueFactory<>("surname"));
+        tableColumnId.setCellValueFactory(new PropertyValueFactory<>("idEmployee"));
+        /*tableColumnSurname.setCellValueFactory(new PropertyValueFactory<>("surname"));
         tableColumnName.setCellValueFactory(new PropertyValueFactory<>("name"));
         tableColumnPatronymic.setCellValueFactory(new PropertyValueFactory<>("patronymic"));
-        tableColumnPost.setCellValueFactory(new PropertyValueFactory<>("post"));
+        tableColumnPost.setCellValueFactory(new PropertyValueFactory<>("post"));*/
         tableColumnRateAnHour.setCellValueFactory(new PropertyValueFactory<>("rateAnHour"));
         tableColumnHour.setCellValueFactory(new PropertyValueFactory<>("hour"));
         tableColumnDate.setCellValueFactory(new PropertyValueFactory<>("date"));
@@ -104,18 +121,18 @@ public class AccountingController {
             Connection connection = DatabaseHandler.getDbConnection();
             ResultSet resultSet = connection.createStatement().executeQuery("select * from accounting");
             while(resultSet.next()){
-                data.addAccounting(new Employee(resultSet.getString("id"),resultSet.getString("surname"),resultSet.getString("name"),resultSet.getString("patronymic"),resultSet.getString("post"),resultSet.getString("rate_an_hour"),resultSet.getString("hour"),resultSet.getString("date")));
+                data.addAccounting(new Employee(resultSet.getString("idEmployee"),resultSet.getString("RateAnHour"),resultSet.getString("Hour"),resultSet.getString("Date")));
                 System.out.println("True");
             };
         } catch (SQLException ex){
             Logger.getLogger(EmployeeController.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("False");
         }
-        tableColumnId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        tableColumnSurname.setCellValueFactory(new PropertyValueFactory<>("surname"));
+        tableColumnId.setCellValueFactory(new PropertyValueFactory<>("idEmployee"));
+        /*tableColumnSurname.setCellValueFactory(new PropertyValueFactory<>("surname"));
         tableColumnName.setCellValueFactory(new PropertyValueFactory<>("name"));
         tableColumnPatronymic.setCellValueFactory(new PropertyValueFactory<>("patronymic"));
-        tableColumnPost.setCellValueFactory(new PropertyValueFactory<>("post"));
+        tableColumnPost.setCellValueFactory(new PropertyValueFactory<>("post"));*/
         tableColumnRateAnHour.setCellValueFactory(new PropertyValueFactory<>("rateAnHour"));
         tableColumnHour.setCellValueFactory(new PropertyValueFactory<>("hour"));
         tableColumnDate.setCellValueFactory(new PropertyValueFactory<>("date"));
@@ -123,21 +140,21 @@ public class AccountingController {
     }
     @FXML
     void addButton(ActionEvent event) throws SQLException, ClassNotFoundException {
-        idEmployee = idTextField.getText();
+        //idEmployee = idTextField.getText();
         date = datePicker.getValue();
         hour = Integer.valueOf(hourTextField.getText());
         rateAnHour = 155;
         Connection connection = DatabaseHandler.getDbConnection();
-        try{
-            ResultSet resultSet = connection.createStatement().executeQuery("select * from employee where id ="+idEmployee);
-            while(resultSet.next()){
-                employee = new Employee(resultSet.getString("id"),resultSet.getString("surname"),resultSet.getString("name"),resultSet.getString("patronymic"),resultSet.getString("post"),rateAnHour,hour,date);
-            };
-        } catch (SQLException ex){
-            Logger.getLogger(EmployeeController.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("False");
-        }
-        String insert ="INSERT INTO " + Const.ACCOUNTING_TABLE + "("+ Const.ACCOUNTING_ID +","+ Const.ACCOUNTING_SURNAME +","+ Const.ACCOUNTING_NAME+","+Const.ACCOUNTING_PATRONYMIC+","+Const.ACCOUNTING_POST+","+ Const.ACCOUNTING_RATE_AN_HOUR+","+ Const.ACCOUNTING_HOUR+","+ Const.ACCOUNTING_DATE+")"+ "VALUES(?,?,?,?,?,?,?,?)";
+        //try{
+            //ResultSet resultSet = connection.createStatement().executeQuery("select * from work where idEmployee ="+idTextField.getText());
+            //while(resultSet.next()){
+                employee = new Employee(idTextField.getText(),rateAnHour,hour,date);
+           // }
+       // } catch (SQLException ex){
+        //    Logger.getLogger(EmployeeController.class.getName()).log(Level.SEVERE, null, ex);
+         //   System.out.println("False");
+        //}
+        String insert ="INSERT INTO " + Const.ACCOUNTING_TABLE + "("+ Const.ACCOUNTING_idEmployee+","+ Const.ACCOUNTING_RATE_AN_HOUR+","+ Const.ACCOUNTING_HOUR+","+ Const.ACCOUNTING_DATE+")"+ "VALUES(?,?,?,?)";
         PreparedStatement prSt = null;
         try {
             prSt = connection.prepareStatement(insert);
@@ -145,11 +162,11 @@ public class AccountingController {
             e.printStackTrace();
         }
         try {
-            prSt.setString(1, employee.getId());
+            prSt.setString(1, employee.getIdEmployee());
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        try {
+        /*try {
             prSt.setString(2, employee.getSurname());
         } catch (SQLException e) {
             e.printStackTrace();
@@ -168,19 +185,19 @@ public class AccountingController {
             prSt.setString(5, employee.getPost());
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        }*/
         try {
-            prSt.setString(6, String.valueOf(employee.getRateAnHour()));
+            prSt.setString(2, String.valueOf(employee.getRateAnHour()));
         } catch (SQLException e) {
             e.printStackTrace();
         }
         try {
-            prSt.setString(7, String.valueOf(employee.getHour()));
+            prSt.setString(3, String.valueOf(employee.getHour()));
         } catch (SQLException e) {
             e.printStackTrace();
         }
         try {
-            prSt.setString(8, String.valueOf(employee.getDate()));
+            prSt.setString(4, String.valueOf(employee.getDate()));
         } catch (SQLException e) {
             e.printStackTrace();
         }

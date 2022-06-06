@@ -95,35 +95,35 @@ public class ReportController {
         Connection connection = DatabaseHandler.getDbConnection();
 
         try{
-            String idEmployee = idTextField.getText();
-            ResultSet resultSet = connection.createStatement().executeQuery("select * from accounting where (id ="+idEmployee+") and (date between \'"+startDate+"\' and \'"+finalDate+"\')");
+            //String idEmployee = idTextField.getText();
+            ResultSet resultSet = connection.createStatement().executeQuery("select * from accounting where (idEmployee ="+idTextField.getText()+") and (date between \'"+startDate+"\' and \'"+finalDate+"\')");
             while(resultSet.next()){
-                data.addReport(new Employee(resultSet.getString("id"), resultSet.getString("surname"), resultSet.getString("name"), resultSet.getString("patronymic"), resultSet.getString("post"), resultSet.getString("rate_an_hour"), resultSet.getString("hour"), resultSet.getString("date")));
+                data.addReport(new Employee(resultSet.getString("idEmployee"),resultSet.getString("RateAnHour"),resultSet.getString("Hour"),resultSet.getString("Date")));
             };
         } catch (SQLException ex){
             Logger.getLogger(EmployeeController.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("False");
         }
-        tableColumnId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        tableColumnSurname.setCellValueFactory(new PropertyValueFactory<>("surname"));
+        tableColumnId.setCellValueFactory(new PropertyValueFactory<>("idEmployee"));
+        /*tableColumnSurname.setCellValueFactory(new PropertyValueFactory<>("surname"));
         tableColumnName.setCellValueFactory(new PropertyValueFactory<>("name"));
         tableColumnPatronymic.setCellValueFactory(new PropertyValueFactory<>("patronymic"));
-        tableColumnPost.setCellValueFactory(new PropertyValueFactory<>("post"));
-        tableColumnRateAnHour.setCellValueFactory(new PropertyValueFactory<>("rateAnHour"));
-        tableColumnHour.setCellValueFactory(new PropertyValueFactory<>("hour"));
-        dateTableColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+        tableColumnPost.setCellValueFactory(new PropertyValueFactory<>("post"));*/
+        tableColumnRateAnHour.setCellValueFactory(new PropertyValueFactory<>("RateAnHour"));
+        tableColumnHour.setCellValueFactory(new PropertyValueFactory<>("Hour"));
+        dateTableColumn.setCellValueFactory(new PropertyValueFactory<>("Date"));
         table.setItems(data.getReport());
         int amountHours = 0 ;
         for (Employee employee : table.getItems()) {
             amountHours = amountHours + employee.getHour();
         }
         System.out.println(amountHours);
-        int rateAnHour = 0;
+        int rate = 0;
         for (Employee employee : table.getItems()) {
-            rateAnHour = employee.getRateAnHour();
+            rate = employee.getRateAnHour();
         }
-        System.out.println(rateAnHour);
-        int resul = Employee.salaryCalculation(rateAnHour,amountHours);
+        System.out.println(rate);
+        int resul = Employee.salaryCalculation(rate,amountHours);
         resultLabel.setText(String.valueOf(resul)+" руб");
 
 

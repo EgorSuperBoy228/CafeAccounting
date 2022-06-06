@@ -31,7 +31,8 @@ public class Const {
     public static final String ACCOUNTING_NAME = "name";
     public static final String ACCOUNTING_PATRONYMIC = "patronymic";
     public static final String ACCOUNTING_POST = "post";
-    public static final String ACCOUNTING_RATE_AN_HOUR = "rate_an_hour";
-    public static final String ACCOUNTING_HOUR = "hour";
-    public static final String ACCOUNTING_DATE = "date";
+    public static final String ACCOUNTING_RATE_AN_HOUR = "RateAnHour";
+    public static final String ACCOUNTING_HOUR = "Hour";
+    public static final String ACCOUNTING_DATE = "Date";
+    public static final String ACCOUNTING_idEmployee = "idEmployee";
 }

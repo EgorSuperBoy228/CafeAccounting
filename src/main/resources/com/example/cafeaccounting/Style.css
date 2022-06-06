@@ -2,12 +2,19 @@
     -fx-background-color: #201F26;
 }
 .exitButton:hover{
-    -fx-background-color: #363537;
+    -fx-background-color: #454545;
 }
 .sidebarItem:hover{
     -fx-border-color: #9C9CFF;
     -fx-border-width: 0px 0px 0px 3px;
 }
+.b:hover{
+    -fx-background-color:  #454545;
+}
+.b{
+    -fx-background-color:  #363537;
+}
+
 
 
 

@@ -41,4 +41,8 @@ public class Cafe  {
     public void clearAccounting() {
         this.employeesAccounting.clear();
     }
+
+    public void remove(Employee employee) {
+        this.employees.remove(employee);
+    }
 }

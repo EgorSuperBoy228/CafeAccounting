@@ -58,10 +58,10 @@
       </AnchorPane>
    </left>
    <center>
-      <StackPane fx:id="stackPane" prefHeight="543.0" prefWidth="642.0" BorderPane.alignment="CENTER" />
+      <StackPane fx:id="stackPane" prefHeight="543.0" prefWidth="635.0" BorderPane.alignment="CENTER" />
    </center>
    <right>
-      <VBox prefHeight="543.0" prefWidth="26.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="543.0" prefWidth="13.0" BorderPane.alignment="CENTER">
          <children>
             <Button mnemonicParsing="false" onAction="#exitButton" prefHeight="29.0" prefWidth="26.0" styleClass="exitButton" text="X" textFill="WHITE">
                <font>

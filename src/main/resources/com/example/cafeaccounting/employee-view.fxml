@@ -3,39 +3,40 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="619.2" prefWidth="859.2" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cafeaccounting.EmployeeController">
+<BorderPane prefHeight="543.0" prefWidth="621.6" style="-fx-background-color: #201F26;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cafeaccounting.EmployeeController">
    <top>
-      <Label prefHeight="74.0" prefWidth="102.0" text="СОТРУДНИКИ" textAlignment="CENTER" textFill="WHITE" BorderPane.alignment="CENTER">
+      <Label prefHeight="57.0" prefWidth="86.0" text="Сотрудники" textAlignment="CENTER" textFill="WHITE" BorderPane.alignment="CENTER">
          <font>
             <Font name="Microsoft YaHei Light" size="15.0" />
          </font>
       </Label>
    </top>
    <left>
-      <VBox prefHeight="471.0" prefWidth="26.0" BorderPane.alignment="CENTER" />
+      <VBox prefHeight="532.0" prefWidth="13.0" BorderPane.alignment="CENTER" />
    </left>
-   <bottom>
-      <HBox prefHeight="74.4" prefWidth="614.0" BorderPane.alignment="CENTER" />
-   </bottom>
    <center>
-      <TableView fx:id="tableEmployee" prefHeight="471.0" prefWidth="807.0" BorderPane.alignment="CENTER">
-        <columns>
-          <TableColumn fx:id="idColumn" prefWidth="35.200010657310486" text="№" />
-            <TableColumn fx:id="surnameColumn" prefWidth="80.79998779296875" text="Фамилия" />
-            <TableColumn fx:id="nameColumn" prefWidth="99.20001220703125" text="Имя" />
-            <TableColumn fx:id="patronymicColumn" prefWidth="75.0" text="Отчество" />
-            <TableColumn fx:id="genderColumn" prefWidth="56.79998779296875" text="Пол" />
-            <TableColumn fx:id="ageColumn" prefWidth="60.79998779296875" text="Возраст" />
-            <TableColumn fx:id="passportSeriesColumn" prefWidth="104.7999267578125" text="Серия паспорта" />
-            <TableColumn fx:id="passportNumberColumn" prefWidth="103.20001220703125" text="Номер паспорта" />
-            <TableColumn fx:id="numberColumn" prefWidth="120.0001220703125" text="Номер" />
-          <TableColumn fx:id="postColumn" prefWidth="100.79999999999995" text="Должность" />
-        </columns>
-      </TableView>
+      <AnchorPane prefHeight="478.0" prefWidth="642.0" BorderPane.alignment="CENTER">
+         <children>
+            <TableView fx:id="tableEmployee" layoutX="11.0" layoutY="14.0" prefHeight="415.0" prefWidth="600.0" stylesheets="@Style.css">
+              <columns>
+                <TableColumn fx:id="idColumn" prefWidth="35.200010657310486" styleClass="table" text="№" />
+                  <TableColumn fx:id="surnameColumn" prefWidth="80.79998779296875" styleClass="table" text="Фамилия" />
+                  <TableColumn fx:id="nameColumn" prefWidth="99.20001220703125" styleClass="table" text="Имя" />
+                  <TableColumn fx:id="patronymicColumn" prefWidth="75.0" styleClass="table" text="Отчество" />
+                  <TableColumn fx:id="genderColumn" prefWidth="56.79998779296875" styleClass="table" text="Пол" />
+                  <TableColumn fx:id="ageColumn" prefWidth="60.79998779296875" styleClass="table" text="Возраст" />
+                  <TableColumn fx:id="passportSeriesColumn" prefWidth="104.7999267578125" styleClass="table" text="Серия паспорта" />
+                  <TableColumn fx:id="passportNumberColumn" prefWidth="103.20001220703125" styleClass="table" text="Номер паспорта" />
+                  <TableColumn fx:id="numberColumn" prefWidth="120.0001220703125" styleClass="table" text="Номер" />
+                <TableColumn fx:id="postColumn" prefWidth="100.79999999999995" styleClass="table" text="Должность" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
    </center>
 </BorderPane>

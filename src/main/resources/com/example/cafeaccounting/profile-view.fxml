@@ -15,7 +15,7 @@
                   <Font name="Microsoft YaHei Light" size="29.0" />
                </font>
             </Label>
-            <Button fx:id="exitProfile" layoutX="255.0" layoutY="425.0" mnemonicParsing="false" style="-fx-background-color: #363537;" text="Выйти из профиля" textFill="WHITE">
+            <Button fx:id="exitProfile" layoutX="255.0" layoutY="425.0" mnemonicParsing="false" styleClass="b" stylesheets="@Style.css" text="Выйти из профиля" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei Light" size="13.0" />
                </font>

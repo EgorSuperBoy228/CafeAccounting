@@ -16,6 +16,8 @@ public class Employee {
     private Integer rateAnHour;
     private int hour;
     private LocalDate date;
+    private int idE;
+    private String idEmployee;
 
     public Employee(String id, String surname, String name, String patronymic, String gender, String age, String passportSeries, String passportNumber, String number, String post) {
         this.surname = surname;
@@ -70,9 +72,44 @@ public class Employee {
         this.hour = Integer.parseInt(hour);
         this.date = LocalDate.parse(date);
     }
+
+    public Employee(String idEmployee) {
+        this.idEmployee = idEmployee;
+    }
+
+    public Employee(String idEmployee, Integer rateAnHour, Integer hour, LocalDate date) {
+        this.idEmployee = idEmployee;
+        this.rateAnHour = rateAnHour;
+        this.hour=hour;
+        this.date=date;
+    }
+
+    public Employee(String idEmployee, String rateAnHour, String hour, String date) {
+        this.idEmployee = idEmployee;
+        this.rateAnHour = Integer.valueOf(rateAnHour);
+        this.hour= Integer.parseInt(hour);
+        this.date= LocalDate.parse(date);
+    }
+
     public static int salaryCalculation(int rateAnHour, int hour){
         int result = rateAnHour*hour;
         return result;
+    }
+
+    public String getIdEmployee() {
+        return idEmployee;
+    }
+
+    public void setIdEmployee(String idEmployee) {
+        this.idEmployee = idEmployee;
+    }
+
+    public int getIdE() {
+        return idE;
+    }
+
+    public void setIdE(int idE) {
+        this.idE = idE;
     }
 
     public LocalDate getDate() {
