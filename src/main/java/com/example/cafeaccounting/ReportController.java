@@ -93,10 +93,11 @@ public class ReportController {
         data = new Cafe();
         data.clearReport();
         Connection connection = DatabaseHandler.getDbConnection();
+        DatabaseHandler dbHandler = new DatabaseHandler();
 
         try{
             //String idEmployee = idTextField.getText();
-            ResultSet resultSet = connection.createStatement().executeQuery("select * from accounting where (idEmployee ="+idTextField.getText()+") and (date between \'"+startDate+"\' and \'"+finalDate+"\')");
+            ResultSet resultSet = dbHandler.getAccountingEmployee(idTextField.getText(),startDate,finalDate);
             while(resultSet.next()){
                 data.addReport(new Employee(resultSet.getString("idEmployee"),resultSet.getString("RateAnHour"),resultSet.getString("Hour"),resultSet.getString("Date")));
             };

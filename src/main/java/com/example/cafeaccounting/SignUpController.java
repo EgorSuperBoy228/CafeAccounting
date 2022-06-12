@@ -1,19 +1,19 @@
 package com.example.cafeaccounting;
 
-import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.ResourceBundle;
-
-import Database.Const;
 import Database.DatabaseHandler;
 import Person.*;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
+
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
 
 
 public class SignUpController {
@@ -66,6 +66,7 @@ public class SignUpController {
     }
     @FXML
     void signUpButton(ActionEvent event) throws SQLException, ClassNotFoundException {
+        DatabaseHandler dbHandler = new DatabaseHandler();
         if(maleRadioButton.isSelected()){
             gender="Муж";
         }
@@ -80,64 +81,7 @@ public class SignUpController {
         }else if(postChoiceBox.getValue().equals("Охранник")){
             employee = new Security(surnameTextField.getText(),nameTextField.getText(),patronymicTextField.getText(),gender,ageTextField.getText(),seriesPassportTextField.getText(),numberPassportTextField.getText(),numberTextField.getText(), postChoiceBox.getValue());
         }
-        String insert ="INSERT INTO " + Const.EMPLOYEE_TABLE + "("+ Const.EMPLOYEE_SURNAME +","+ Const.EMPLOYEE_NAME +","+ Const.EMPLOYEE_PATRONYMIC+","+Const.EMPLOYEE_GENDER+","+Const.EMPLOYEE_AGE+","+ Const.EMPLOYEE_PASSPORT_SERIES+","+ Const.EMPLOYEE_PASSPORT_NUMBER+","+ Const.EMPLOYEE_NUMBER+","+ Const.EMPLOYEE_POST+")"+ "VALUES(?,?,?,?,?,?,?,?,?)";
-        PreparedStatement prSt = null;
-        try {
-            prSt = connection.prepareStatement(insert);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        try {
-            prSt.setString(1, employee.getSurname());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        try {
-            prSt.setString(2, employee.getName());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        try {
-            prSt.setString(3, employee.getPatronymic());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        try {
-            prSt.setString(4, employee.getGender());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        try {
-            prSt.setString(5, employee.getAge());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        try {
-            prSt.setString(6, employee.getPassportSeries());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        try {
-            prSt.setString(7, employee.getPassportNumber());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        try {
-            prSt.setString(8, employee.getNumber());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        try {
-            prSt.setString(9, employee.getPost());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        try {
-            prSt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
+        dbHandler.signUpEmployee(employee);
     }
 
 

@@ -35,4 +35,5 @@ public class Const {
     public static final String ACCOUNTING_HOUR = "Hour";
     public static final String ACCOUNTING_DATE = "Date";
     public static final String ACCOUNTING_idEmployee = "idEmployee";
+    public static final String ACCOUNTING_id = "id";
 }

@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -19,6 +20,9 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class SignInController {
+
+    @FXML
+    private Label errorTextField;
 
     @FXML
     private ResourceBundle resources;
@@ -101,10 +105,15 @@ public class SignInController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            errorTextField.setText("");
             stage.setTitle("CafeAccounting");
             stage.setScene(scene);
             stage.initStyle(StageStyle.UNDECORATED);
             stage.show();
+        }
+        else if(counter==0) {
+            System.out.println("Ошибка");
+            errorTextField.setText("Неверный логин или пароль!");
         }
         else {
             user.setPost("Менеджер");
@@ -118,6 +127,7 @@ public class SignInController {
                 }
                 count++;
             }
+            errorTextField.setText("");
             if (count >= 1) {
                 signInButton.getScene().getWindow().hide();
                 Stage stage = new Stage();
@@ -135,6 +145,7 @@ public class SignInController {
             }
 
         }
+
     }
 
     public void rollUpButton (ActionEvent actionEvent){

@@ -12,6 +12,7 @@ public class Employee {
     private String number;
     private String age;
     private String id;
+    private String idAccounting;
     private String gender;
     private Integer rateAnHour;
     private int hour;
@@ -43,12 +44,20 @@ public class Employee {
         this.post=post;
     }
 
-    public Employee(String id, String surname, String name, String patronymic, String post) {
+    /*public Employee(String id, String surname, String name, String patronymic, String post) {
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
         this.post = post;
         this.id = id;
+    }*/
+
+    public Employee(String idAccounting, String id, String rateAnHour, String hour, String date) {
+        this.idEmployee = id;
+        this.idAccounting = idAccounting;
+        this.rateAnHour = Integer.valueOf(rateAnHour);
+        this.hour = Integer.parseInt(hour);
+        this.date = LocalDate.parse(date);
     }
 
     public Employee(String id, String surname, String name, String patronymic, String post, int rateAnHour, int hour, LocalDate date) {
@@ -91,9 +100,18 @@ public class Employee {
         this.date= LocalDate.parse(date);
     }
 
+
     public static int salaryCalculation(int rateAnHour, int hour){
         int result = rateAnHour*hour;
         return result;
+    }
+
+    public String getIdAccounting() {
+        return idAccounting;
+    }
+
+    public void setIdAccounting(String idAccounting) {
+        this.idAccounting = idAccounting;
     }
 
     public String getIdEmployee() {
@@ -217,4 +235,6 @@ public class Employee {
     public void setId(String id) {
         this.id = id;
     }
+
+
 }
