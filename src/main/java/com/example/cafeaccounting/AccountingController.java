@@ -4,6 +4,8 @@ import Database.DatabaseHandler;
 import Person.Accounting;
 import Person.Cafe;
 import Person.Employee;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -62,7 +64,8 @@ public class AccountingController{
     @FXML
     private TextField idTextField;
 
-
+    @FXML
+    private ChoiceBox<String> choiceBoxEmployee;
     @FXML
     private TextField hourTextField;
     private LocalDate date;
@@ -76,6 +79,13 @@ public class AccountingController{
     private double yOffset;
     private MenuItem update = new MenuItem("Изменить");
     private int id;
+    private static ObservableList<String> employees = FXCollections.observableArrayList();
+
+    @FXML
+    private Button searchButton;
+
+    @FXML
+    private TextField searchTextField;
 
     public int getId() {
         return id;
@@ -86,7 +96,7 @@ public class AccountingController{
     }
 
     @FXML
-    void initialize() throws ClassNotFoundException {
+    void initialize() throws ClassNotFoundException, SQLException {
         data = new Cafe();
         data.clearAccounting();
 
@@ -103,12 +113,36 @@ public class AccountingController{
             Logger.getLogger(EmployeeController.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("False");
         }
-        //tableColumnIdAccounting.setCellValueFactory(new PropertyValueFactory<>("id"));
+        DatabaseHandler databaseHandler = new DatabaseHandler();
+        try{
+            Connection connection = DatabaseHandler.getDbConnection();
+            ResultSet resultSetEmployee = databaseHandler.getEmployee();
+            employees.clear();
+            while(resultSetEmployee.next()){
+                String id = resultSetEmployee.getString("id");
+                String surname = resultSetEmployee.getString("surname");
+                String name = resultSetEmployee.getString("name");
+                String patronymic = resultSetEmployee.getString("patronymic");
+                String entry = id+" - "+surname+" "+name+" "+patronymic;
+                employees.add(entry);
+                //employees.add(employee = new Employee(resultSetEmployee.getString("id"),resultSetEmployee.getString("surname"),resultSetEmployee.getString("name")));
+                System.out.println("True");
+            };
+        } catch (SQLException ex){
+            Logger.getLogger(EmployeeController.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("False");
+        }
+        choiceBoxEmployee.setItems(employees);
+
         tableColumnId.setCellValueFactory(new PropertyValueFactory<>("idEmployee"));
         tableColumnRateAnHour.setCellValueFactory(new PropertyValueFactory<>("rateAnHour"));
         tableColumnHour.setCellValueFactory(new PropertyValueFactory<>("hour"));
         tableColumnDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         table.setItems(data.getEmployeesAccounting());
+
+
+
+
         MenuItem dell = new MenuItem("Удалить");
         dell.setOnAction((ActionEvent event) -> {
             try {
@@ -195,15 +229,25 @@ public class AccountingController{
         table.setItems(data.getEmployeesAccounting());
     }
     @FXML
-    void addButton(ActionEvent event) throws SQLException, ClassNotFoundException {
+    void addButton(ActionEvent event) throws ClassNotFoundException, SQLException {
         DatabaseHandler dbHandler = new DatabaseHandler();
         date = datePicker.getValue();
+        String value = choiceBoxEmployee.getValue();
         hour = Integer.valueOf(hourTextField.getText());
         rateAnHour = 155;
         Connection connection = DatabaseHandler.getDbConnection();
-        employee = new Employee(idTextField.getText(),rateAnHour,hour,date);
-        dbHandler.setAccounting(employee);
-        refreshTable();
+            employee = new Employee(untilSpace(value),rateAnHour,hour,date);
+            System.out.println(untilSpace(value));
+            dbHandler.setAccounting(employee);
+            DialogManager dialogManager = new DialogManager();
+            dialogManager.setTitle("Уведомление");
+            dialogManager.setMessage("Добавление прошло успешно!");
+            dialogManager.start();
+            refreshTable();
+    }
+
+    private String untilSpace(String value) {
+        return value.replaceAll(" .*", "");
     }
 
 

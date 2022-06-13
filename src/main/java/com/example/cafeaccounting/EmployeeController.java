@@ -95,7 +95,8 @@ public class EmployeeController {
         DatabaseHandler dbHandler = new DatabaseHandler();
 
         try{
-            data.clear();Connection connection = DatabaseHandler.getDbConnection();
+            data.clear();
+            Connection connection = DatabaseHandler.getDbConnection();
             ResultSet resultSet = dbHandler.getEmployee();
             while(resultSet.next()){
                 data.add(employee = new Employee(resultSet.getString("id"),resultSet.getString("surname"),resultSet.getString("name"),resultSet.getString("patronymic"),resultSet.getString("gender"),resultSet.getString("age"),resultSet.getString("passport_series"),resultSet.getString("passport_number"),resultSet.getString("number"),resultSet.getString("post")));

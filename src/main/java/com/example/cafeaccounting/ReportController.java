@@ -3,6 +3,8 @@ package com.example.cafeaccounting;
 import Database.DatabaseHandler;
 import Person.Cafe;
 import Person.Employee;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -80,11 +82,14 @@ public class ReportController {
     @FXML
     private TableColumn<Employee, LocalDate> dateTableColumn;
     @FXML
+    private ChoiceBox<String> choiceBoxEmployee;
+
+    @FXML
     private Label resultLabel;
     private Cafe data;
     private LocalDate startDate;
     private LocalDate finalDate;
-
+    private static ObservableList<String> employees = FXCollections.observableArrayList();
 
     @FXML
     void reportButton(ActionEvent event) throws SQLException, ClassNotFoundException {
@@ -94,10 +99,11 @@ public class ReportController {
         data.clearReport();
         Connection connection = DatabaseHandler.getDbConnection();
         DatabaseHandler dbHandler = new DatabaseHandler();
+        String value = choiceBoxEmployee.getValue();
 
         try{
             //String idEmployee = idTextField.getText();
-            ResultSet resultSet = dbHandler.getAccountingEmployee(idTextField.getText(),startDate,finalDate);
+            ResultSet resultSet = dbHandler.getAccountingEmployee(untilSpace(value),startDate,finalDate);
             while(resultSet.next()){
                 data.addReport(new Employee(resultSet.getString("idEmployee"),resultSet.getString("RateAnHour"),resultSet.getString("Hour"),resultSet.getString("Date")));
             };
@@ -126,13 +132,39 @@ public class ReportController {
         System.out.println(rate);
         int resul = Employee.salaryCalculation(rate,amountHours);
         resultLabel.setText(String.valueOf(resul)+" руб");
-
+        DialogManager dialogManager = new DialogManager();
+        dialogManager.setTitle("Уведомление");
+        dialogManager.setMessage("Расчёт произведён успешно!");
+        dialogManager.start();
 
     }
 
     @FXML
     void initialize() {
-
+        DatabaseHandler dbHandler = new DatabaseHandler();
+        try{
+            ResultSet resultSetEmployee = dbHandler.getEmployee();
+            employees.clear();
+            while(resultSetEmployee.next()){
+                String id = resultSetEmployee.getString("id");
+                String surname = resultSetEmployee.getString("surname");
+                String name = resultSetEmployee.getString("name");
+                String patronymic = resultSetEmployee.getString("patronymic");
+                String entry = id+" - "+surname+" "+name+" "+patronymic;
+                employees.add(entry);
+                //employees.add(employee = new Employee(resultSetEmployee.getString("id"),resultSetEmployee.getString("surname"),resultSetEmployee.getString("name")));
+                System.out.println("True");
+            };
+        } catch (SQLException ex){
+            Logger.getLogger(EmployeeController.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("False");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        choiceBoxEmployee.setItems(employees);
+    }
+    private String untilSpace(String value) {
+        return value.replaceAll(" .*", "");
     }
 
 }

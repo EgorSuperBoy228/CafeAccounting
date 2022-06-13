@@ -82,6 +82,10 @@ public class SignUpController {
             employee = new Security(surnameTextField.getText(),nameTextField.getText(),patronymicTextField.getText(),gender,ageTextField.getText(),seriesPassportTextField.getText(),numberPassportTextField.getText(),numberTextField.getText(), postChoiceBox.getValue());
         }
         dbHandler.signUpEmployee(employee);
+        DialogManager dialogManager = new DialogManager();
+        dialogManager.setTitle("Уведомление");
+        dialogManager.setMessage("Регистрация сотрудника прошла успешно!");
+        dialogManager.start();
     }
 
 

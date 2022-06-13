@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -34,11 +35,13 @@
                   <TableColumn fx:id="tableColumnDate" minWidth="0.0" prefWidth="185.5999816894531" text="Дата" />
               </columns>
             </TableView>
-            <TextField fx:id="idTextField" layoutX="435.0" layoutY="296.0" prefHeight="26.0" prefWidth="176.0" promptText="id сотрудника">
+            <ChoiceBox fx:id="choiceBoxEmployee" layoutX="405.0" layoutY="296.0" prefHeight="26.0" prefWidth="205.0" />
+            <TextField fx:id="searchTextField" layoutX="405.0" layoutY="335.0" prefHeight="26.0" prefWidth="205.0" />
+            <Button fx:id="searchButton" layoutX="338.0" layoutY="335.0" mnemonicParsing="false" styleClass="b" stylesheets="@Style.css" text="Поиск" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei Light" size="13.0" />
                </font>
-            </TextField>
+            </Button>
          </children>
       </AnchorPane>
    </center>

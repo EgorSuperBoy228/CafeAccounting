@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="176.0" prefWidth="343.0" style="-fx-background-color: #201F26;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cafeaccounting.DialogController">
+   <children>
+      <Button fx:id="buttonOk" layoutX="120.0" layoutY="129.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="98.0" styleClass="b" stylesheets="@Style.css" text="Ок" textFill="WHITE">
+         <font>
+            <Font name="Microsoft YaHei Light" size="12.0" />
+         </font>
+      </Button>
+      <StackPane layoutX="-2.0" layoutY="48.0" prefHeight="59.0" prefWidth="343.0">
+         <children>
+            <Label fx:id="messageLabel" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei Light" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </StackPane>
+      <StackPane prefHeight="59.0" prefWidth="343.0" style="-fx-background-color: #26252d;">
+         <children>
+            <Label fx:id="titleLabel" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei Light" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>
